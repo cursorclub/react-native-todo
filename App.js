@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, TextInput, View, FlatList, Text } from 'react-native';
+import { StyleSheet, TextInput, View, FlatList, Text, KeyboardAvoidingView } from 'react-native';
 import { Constants } from 'expo';
 import { Icon } from 'react-native-elements';
 import uuid from 'uuid';
@@ -22,7 +22,10 @@ export default class App extends React.Component {
   }
   render() {
     return (
-      <View style={styles.container}>
+      <KeyboardAvoidingView
+        behavior="padding"
+        style={styles.container}
+      >
         <FlatList
           data={this.state.todos}
           renderItem={({item}) => <Text>{item.text}</Text>}
@@ -41,7 +44,7 @@ export default class App extends React.Component {
             iconStyle={styles.icon}
           />
         </View>
-      </View>
+      </KeyboardAvoidingView>
     );
   }
 }
