@@ -1,8 +1,9 @@
 import React from 'react';
-import { StyleSheet, TextInput, View, FlatList, Text, KeyboardAvoidingView } from 'react-native';
+import { StyleSheet, TextInput, View, FlatList, KeyboardAvoidingView } from 'react-native';
 import { Constants } from 'expo';
 import { Icon } from 'react-native-elements';
 import uuid from 'uuid';
+import Todo from './Todo.js';
 
 export default class App extends React.Component {
   constructor(props) {
@@ -28,7 +29,10 @@ export default class App extends React.Component {
       >
         <FlatList
           data={this.state.todos}
-          renderItem={({item}) => <Text>{item.text}</Text>}
+          renderItem={({item}) =>
+            <Todo
+              text={item.text}
+            />}
         />
         <View style={styles.textBox}>
           <TextInput
