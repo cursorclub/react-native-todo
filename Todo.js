@@ -9,7 +9,9 @@ export default ({ text, done, onToggleCheck, onDeleteTask }) =>
       onPress={onToggleCheck}
       containerStyle={styles.checkBox}
     />
-    <Text style={styles.text}>{text}</Text>
+    <View style={styles.wrapper}>
+      <Text>{text}</Text>
+    </View>
     <Icon
       name="clear"
       onPress={onDeleteTask}
@@ -20,7 +22,6 @@ export default ({ text, done, onToggleCheck, onDeleteTask }) =>
 const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
-    alignItems: 'center',
     backgroundColor: '#eee',
     borderRadius: 5,
     marginTop: 10,
@@ -30,10 +31,11 @@ const styles = StyleSheet.create({
     backgroundColor: 'transparent',
     borderWidth: 0,
   },
-  text: {
-    flexGrow: 1,
-  },
   icon: {
     padding: 10,
+  },
+  wrapper: {
+    flex: 1,
+    justifyContent: 'center',
   },
 });

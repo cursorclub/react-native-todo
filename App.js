@@ -53,13 +53,15 @@ export default class App extends React.Component {
             />}
         />
         <View style={styles.textBox}>
-          <TextInput
-            placeholder="What do you want to do?"
-            onChangeText={textInput => this.setState({textInput})}
-            onSubmitEditing={this.submitTodo}
-            value={this.state.textInput}
-            style={styles.textInput}
-          />
+          <View style={styles.wrapper}>
+            <TextInput
+              placeholder="What do you want to do?"
+              onChangeText={textInput => this.setState({textInput})}
+              onSubmitEditing={this.submitTodo}
+              value={this.state.textInput}
+              style={styles.textInput}
+            />
+          </View>
           <Icon
             name="add"
             onPress={this.submitTodo}
@@ -85,5 +87,8 @@ const styles = StyleSheet.create({
   },
   icon: {
     padding: 10,
+  },
+  wrapper: {
+    flex: 1
   },
 });
