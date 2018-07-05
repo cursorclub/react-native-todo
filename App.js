@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, TextInput, View } from 'react-native';
+import { StyleSheet, TextInput, View, FlatList, Text } from 'react-native';
 import { Constants } from 'expo';
 import { Icon } from 'react-native-elements';
 import uuid from 'uuid';
@@ -17,6 +17,10 @@ export default class App extends React.Component {
   render() {
     return (
       <View style={styles.container}>
+        <FlatList
+          data={this.state.todos}
+          renderItem={({item}) => <Text>{item.text}</Text>}
+        />
         <View style={styles.textBox}>
           <TextInput
             placeholder="What do you want to do?"
