@@ -14,6 +14,12 @@ export default class App extends React.Component {
       ],
     };
   }
+  submitTodo = () => {
+    this.setState(({todos, textInput}) => ({
+      todos: [...todos, { key: uuid.v4(), done: false, text: textInput }],
+      textInput: '',
+    }))
+  }
   render() {
     return (
       <View style={styles.container}>
@@ -24,10 +30,14 @@ export default class App extends React.Component {
         <View style={styles.textBox}>
           <TextInput
             placeholder="What do you want to do?"
+            onChangeText={textInput => this.setState({textInput})}
+            onSubmitEditing={this.submitTodo}
+            value={this.state.textInput}
             style={styles.textInput}
           />
           <Icon
             name="add"
+            onPress={this.submitTodo}
             iconStyle={styles.icon}
           />
         </View>
