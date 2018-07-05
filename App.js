@@ -9,10 +9,7 @@ export default class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      todos: [
-        { key: uuid.v4(), done: true, text: 'Host this workshop' },
-        { key: uuid.v4(), done: false, text: 'Do something else' },
-      ],
+      todos: [],
     };
   }
   submitTodo = () => {
