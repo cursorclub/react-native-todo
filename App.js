@@ -21,6 +21,21 @@ export default class App extends React.Component {
       textInput: '',
     }))
   }
+  toggleCheck = key => {
+    this.setState(({todos}) => ({
+      todos: todos.map(todo => {
+        if (todo.key === key) {
+          todo.done = !todo.done;
+        }
+        return todo;
+      }),
+    }));
+  }
+  deleteTask = key => {
+    this.setState(({todos}) => ({
+      todos: todos.filter(todo => todo.key !== key),
+    }));
+  }
   render() {
     return (
       <KeyboardAvoidingView
@@ -32,6 +47,9 @@ export default class App extends React.Component {
           renderItem={({item}) =>
             <Todo
               text={item.text}
+              done={item.done}
+              onToggleCheck={() => this.toggleCheck(item.key)}
+              onDeleteTask={() => this.deleteTask(item.key)}
             />}
         />
         <View style={styles.textBox}>
